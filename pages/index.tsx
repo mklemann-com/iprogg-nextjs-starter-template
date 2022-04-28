@@ -1,11 +1,18 @@
-import type { NextPage } from 'next'
+import type { NextPage } from 'next';
+import Head from 'next/head';
+import Counter from '../features/counter/Counter';
 
-const Home: NextPage = () => {
+const IndexPage: NextPage = () => {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
-  )
-}
+    <div>
+      <Head>
+        <title>iProGG Next.JS Starter Template</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
 
-export default Home
+      <Counter />
+    </div>
+  );
+};
+
+export default IndexPage;
