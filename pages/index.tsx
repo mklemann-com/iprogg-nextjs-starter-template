@@ -1,17 +1,31 @@
 import type { NextPage } from 'next';
-import Head from 'next/head';
-import Counter from '../features/counter/Counter';
+import { useSession } from 'next-auth/react';
+import Header from '../components/Header';
 
 const IndexPage: NextPage = () => {
+  const { data: session } = useSession();
   return (
-    <div>
-      <Head>
-        <title>iProGG Next.JS Starter Template</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <>
+      <Header />
 
-      <Counter />
-    </div>
+      <div className="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+        <div className="sm:mx-auto sm:w-full sm:max-w-md">
+          {!session?.user ? (
+            <>
+              <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+                Not logged in!
+              </h2>
+            </>
+          ) : (
+            <>
+              <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+                Logged in as {session?.user?.name} ({session?.user?.email})
+              </h2>
+            </>
+          )}
+        </div>
+      </div>
+    </>
   );
 };
 
