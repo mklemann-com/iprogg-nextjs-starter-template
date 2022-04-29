@@ -1,9 +1,13 @@
 import type { NextPage } from 'next';
 import { useSession } from 'next-auth/react';
+import { useSelector } from 'react-redux';
 import Header from '../components/Header';
+import { AppState } from '../store/store';
 
 const IndexPage: NextPage = () => {
   const { data: session } = useSession();
+  const showModal = useSelector((state: AppState) => state.modal.modal);
+
   return (
     <>
       <Header />

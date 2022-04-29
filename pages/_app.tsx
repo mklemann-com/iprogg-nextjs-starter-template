@@ -1,6 +1,7 @@
 import { SessionProvider } from 'next-auth/react';
 import type { AppProps } from 'next/app';
 import { Provider } from 'react-redux';
+import LoginModal from '../components/Modal/LoginModal';
 import store from '../store/store';
 import '../styles/globals.css';
 
@@ -32,6 +33,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
       <Provider store={store}>
         <SessionProvider session={session}>
           <Component {...pageProps} />
+          <LoginModal />
         </SessionProvider>
       </Provider>
     </>

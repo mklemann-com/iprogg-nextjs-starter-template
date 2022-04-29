@@ -1,5 +1,7 @@
 import { signIn, signOut, useSession } from 'next-auth/react';
 import Link from 'next/link';
+import { useDispatch } from 'react-redux';
+import { open } from '../../features/modalSlice';
 
 /* This example requires Tailwind CSS v2.0+ */
 const navigation = [
@@ -11,7 +13,8 @@ const navigation = [
 
 const Header = () => {
   const { data: session } = useSession();
-  console.log({ session });
+  const dispatch = useDispatch();
+
   return (
     <header className="bg-indigo-600">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Top">
@@ -43,6 +46,13 @@ const Header = () => {
                   className="inline-block bg-white py-2 px-4 border border-transparent rounded-md text-base font-medium text-indigo-600 hover:bg-indigo-50"
                 >
                   Sign in
+                </a>
+                <a
+                  href="#"
+                  onClick={() => dispatch(open())}
+                  className="inline-block bg-white py-2 px-4 border border-transparent rounded-md text-base font-medium text-indigo-600 hover:bg-indigo-50"
+                >
+                  Sign in (Modal)
                 </a>
               </>
             ) : (
