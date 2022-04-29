@@ -25,8 +25,21 @@ const Login = () => {
       password,
       callbackUrl: '/',
     })
-      .then((res) => console.log({ res }))
-      .catch((e) => console.error({ e }));
+      .then((res) => {
+        debugger;
+        console.log({ res });
+        if (res) {
+          if (!res.ok) {
+            alert(res.error);
+          } else {
+          }
+        }
+      })
+      .catch((e) => {
+        debugger;
+        console.error({ e });
+        alert(e.message);
+      });
   };
 
   const loginWithFirebase = (e: any) => {

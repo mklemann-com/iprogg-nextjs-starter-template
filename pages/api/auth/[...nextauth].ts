@@ -32,36 +32,42 @@ export default NextAuth({
         const { email, password } = credentials;
         console.log({ req });
 
-        const res = await signInWithEmailAndPassword(auth, email, password);
-        console.log({ res });
+        try {
+          const res = await signInWithEmailAndPassword(auth, email, password);
+          console.log({ res });
 
-        // .then((userAuth) => {
-        //   dispatch(
-        //     login({
-        //       email: userAuth.user.email,
-        //       uid: userAuth.user.uid,
-        //       displayName: userAuth.user.displayName,
-        //       photoUrl: userAuth.user.photoURL,
-        //     })
-        //   );
-        // })
-        // .catch((error) => alert(error));
+          // .then((userAuth) => {
+          //   dispatch(
+          //     login({
+          //       email: userAuth.user.email,
+          //       uid: userAuth.user.uid,
+          //       displayName: userAuth.user.displayName,
+          //       photoUrl: userAuth.user.photoURL,
+          //     })
+          //   );
+          // })
+          // .catch((error) => alert(error));
 
-        // Add logic here to look up the user from the credentials supplied
-        const user = {
-          id: res.user.uid,
-          name: res.user.displayName,
-          email: res.user.email,
-        };
+          // Add logic here to look up the user from the credentials supplied
+          const user = {
+            id: res.user.uid,
+            name: res.user.displayName,
+            email: res.user.email,
+          };
 
-        if (user) {
-          // Any object returned will be saved in `user` property of the JWT
-          return user;
-        } else {
-          // If you return null then an error will be displayed advising the user to check their details.
+          if (user) {
+            // Any object returned will be saved in `user` property of the JWT
+            return user;
+          } else {
+            // If you return null then an error will be displayed advising the user to check their details.
+            return null;
+
+            // You can also Reject this callback with an Error thus the user will be sent to the error page with the error message as a query parameter
+          }
+        } catch (e) {
+          console.error(e);
           return null;
-
-          // You can also Reject this callback with an Error thus the user will be sent to the error page with the error message as a query parameter
+          // throw new Error(e);
         }
       },
     }),
