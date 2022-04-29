@@ -1,5 +1,6 @@
 import { SessionProvider } from 'next-auth/react';
 import type { AppProps } from 'next/app';
+import Head from 'next/head';
 import { Provider } from 'react-redux';
 import LoginModal from '../components/Modal/LoginModal';
 import store from '../store/store';
@@ -32,6 +33,9 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
     <>
       <Provider store={store}>
         <SessionProvider session={session}>
+          <Head>
+            <title>iProGG Next.JS Starter Template</title>
+          </Head>
           <Component {...pageProps} />
           <LoginModal />
         </SessionProvider>

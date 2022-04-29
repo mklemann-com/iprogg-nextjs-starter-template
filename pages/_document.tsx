@@ -16,7 +16,6 @@ class MyDocument extends Document {
     return (
       <Html lang="de" className="h-full bg-gray-50">
         <Head>
-          <title>iProGG Next.JS Starter Template</title>
           <link rel="icon" href="/favicon.ico" />
           <link href="https://rsms.me/inter/inter.css" rel="stylesheet" />
         </Head>
