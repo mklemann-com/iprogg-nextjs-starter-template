@@ -9,7 +9,9 @@ import { useDispatch } from 'react-redux';
 import { login } from '../../features/userSlice';
 import { auth } from '../../firebase/firebase';
 
-const Login = () => {
+export interface ILogin {}
+
+const Login: React.FC<ILogin> = () => {
   const [email, setEmail] = useState('mklemann@web.de');
   const [password, setPassword] = useState('password');
   const [name, setName] = useState('Markus K.');

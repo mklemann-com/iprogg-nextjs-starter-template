@@ -11,7 +11,9 @@ const navigation = [
   { name: 'Menu #4', href: '#' },
 ];
 
-const Header = () => {
+export interface IHeader {}
+
+const Header: React.FC<IHeader> = () => {
   const { data: session } = useSession();
   const dispatch = useDispatch();
 

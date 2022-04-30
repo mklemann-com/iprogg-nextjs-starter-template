@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import { useSession } from 'next-auth/react';
 import Header from '../components/Header/Header';
-import MiniProfile from '../components/Profile/MiniProfile';
+import MiniProfile from '../components/MiniProfile/MiniProfile';
 
 const IndexPage: NextPage = () => {
   const { data: session } = useSession();

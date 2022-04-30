@@ -1,10 +1,9 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import React from 'react';
-import MiniProfile from './MiniProfile';
+import MiniProfile, { IMiniProfile } from './MiniProfile';
+import { mockMiniProfileProps } from './MiniProfile.mocks';
 
-// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: 'Components/MiniProfile',
+  title: 'components/MiniProfile',
   component: MiniProfile,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {},
@@ -15,10 +14,9 @@ const Template: ComponentStory<typeof MiniProfile> = (args) => (
   <MiniProfile {...args} />
 );
 
-export const Default = Template.bind({});
+export const Base = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Default.args = {
-  name: 'Markus',
-  email: 'email@mklemann.com',
-  imageUrl: 'https://i.pravatar.cc/300',
-};
+
+Base.args = {
+  ...mockMiniProfileProps.base,
+} as IMiniProfile;

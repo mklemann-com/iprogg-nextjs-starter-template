@@ -1,19 +1,23 @@
 import Image from 'next/image';
 import React from 'react';
 
-interface Props {
+export interface IMiniProfile {
   name?: string | null;
   email?: string | null;
   imageUrl?: string | null;
 }
 
-const MiniProfile = ({ name, email, imageUrl }: Props) => {
+const MiniProfile: React.FC<IMiniProfile> = ({
+  name,
+  email,
+  imageUrl,
+}: IMiniProfile) => {
   return (
     <>
       <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
         Welcome to iProGG NextJS Starter Template
       </h2>
-      <div className="flex items-center justify-between mt-14 ml-10">
+      <div className="flex items-center justify-between mt-14">
         {imageUrl && (
           <Image
             className="w-16 h-16 rounded-full border p-[2px]"

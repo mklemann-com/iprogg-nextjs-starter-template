@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   stories: ['../**/*.stories.mdx', '../**/*.stories.@(js|jsx|ts|tsx)'],
@@ -47,6 +48,19 @@ module.exports = {
       '@': [path.resolve(__dirname, '../')],
     };
 
+    // Enable sourcemaps in Storybook.
+    config.module.rules.push({
+      test: /\.css$/i,
+      use: [
+        {
+          loader: 'postcss-loader',
+          options: {
+            sourceMap: true,
+          },
+        },
+      ],
+    });
+
     /**
      * Fixes font import with /
      * @see https://github.com/storybookjs/storybook/issues/12844#issuecomment-867544160
@@ -55,6 +69,28 @@ module.exports = {
       path.resolve(__dirname, '../public'),
       'node_modules',
     ];
+
+    // Enable Next.js <Image /> component support.
+    config.plugins.push(
+      new webpack.DefinePlugin({
+        'process.env.__NEXT_IMAGE_OPTS': JSON.stringify({
+          deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+          imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+          domains: [
+            'images.unsplash.com',
+            'localhost',
+            'i.pravatar.cc',
+            'eu.ui-avatars.com',
+            'scontent-ham3-1.xx.fbcdn.net',
+            'cdn.pixabay.com',
+            'lh3.googleusercontent.com',
+            'platform-lookaside.fbsbx.com',
+          ],
+          path: '/',
+          loader: 'default',
+        }),
+      })
+    );
 
     return config;
   },
