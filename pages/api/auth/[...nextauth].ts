@@ -27,7 +27,7 @@ export default NextAuth({
         username: { label: 'Username', type: 'text', placeholder: 'jsmith' },
         password: { label: 'Password', type: 'password' },
       },
-      async authorize(credentials, req) {
+      async authorize(credentials, req): any {
         console.log({ credentials });
         const { email, password } = credentials;
         console.log({ req });
@@ -79,7 +79,7 @@ export default NextAuth({
     signIn: '/auth/signin',
   },
   callbacks: {
-    async session({ session, token, user }: any) {
+    async session({ session, token }: any) {
       session.user.username = session.user.name
         .split(' ')
         .join('')

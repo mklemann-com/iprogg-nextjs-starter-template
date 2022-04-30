@@ -25,18 +25,15 @@ const Login = () => {
       password,
       callbackUrl: '/',
     })
-      .then((res) => {
-        debugger;
+      .then((res: any) => {
         console.log({ res });
         if (res) {
           if (!res.ok) {
             alert(res.error);
-          } else {
           }
         }
       })
       .catch((e) => {
-        debugger;
         console.error({ e });
         alert(e.message);
       });

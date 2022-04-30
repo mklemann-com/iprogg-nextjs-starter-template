@@ -1,11 +1,10 @@
 import { GetServerSidePropsContext } from 'next';
-import { getProviders, getSession, useSession } from 'next-auth/react';
+import { getSession, useSession } from 'next-auth/react';
 import React from 'react';
 import Header from '../../components/Header/Header';
 import Login from '../../components/Login/Login';
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-  const providers = await getProviders();
   const session = await getSession({ req: context.req });
 
   if (session) {
@@ -17,11 +16,11 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     };
   }
   return {
-    props: { providers },
+    props: {},
   };
 }
 
-const SignIn = ({ providers }: { providers: any[] }) => {
+const SignIn = () => {
   const { data: session } = useSession();
   return (
     <>
