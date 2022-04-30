@@ -1,7 +1,7 @@
 import { GetServerSidePropsContext } from 'next';
 import { getProviders, getSession, useSession } from 'next-auth/react';
 import React from 'react';
-import Header from '../../components/Header';
+import Header from '../../components/Header/Header';
 import Login from '../../components/Login/Login';
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {

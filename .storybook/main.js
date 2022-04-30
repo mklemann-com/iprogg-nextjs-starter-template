@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   stories: ['../**/*.stories.mdx', '../**/*.stories.@(js|jsx|ts|tsx)'],
   /** Expose public folder to storybook as static */
@@ -6,7 +8,7 @@ module.exports = {
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
-    'storybook-css-modules-preset',
+    'storybook-addon-next',
     'storybook-addon-next-router',
     {
       /**
@@ -22,7 +24,38 @@ module.exports = {
     },
   ],
   framework: '@storybook/react',
+  typescript: {
+    check: false,
+    checkOptions: {},
+    reactDocgen: false,
+    reactDocgenTypescriptOptions: {
+      shouldExtractLiteralValuesFromEnum: true,
+      propFilter: (prop) =>
+        prop.parent ? !/node_modules/.test(prop.parent.fileName) : true,
+    },
+  },
   core: {
     builder: '@storybook/builder-webpack5',
+  },
+  webpackFinal: (config) => {
+    /**
+     * Add support for alias-imports
+     * @see https://github.com/storybookjs/storybook/issues/11989#issuecomment-715524391
+     */
+    config.resolve.alias = {
+      ...config.resolve?.alias,
+      '@': [path.resolve(__dirname, '../')],
+    };
+
+    /**
+     * Fixes font import with /
+     * @see https://github.com/storybookjs/storybook/issues/12844#issuecomment-867544160
+     */
+    config.resolve.roots = [
+      path.resolve(__dirname, '../public'),
+      'node_modules',
+    ];
+
+    return config;
   },
 };

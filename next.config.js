@@ -2,7 +2,16 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['i.pravatar.cc'],
+    domains: [
+      'images.unsplash.com',
+      'localhost',
+      'i.pravatar.cc',
+      'eu.ui-avatars.com',
+      'scontent-ham3-1.xx.fbcdn.net',
+      'cdn.pixabay.com',
+      'lh3.googleusercontent.com',
+      'platform-lookaside.fbsbx.com',
+    ],
   },
   i18n: {
     /**
