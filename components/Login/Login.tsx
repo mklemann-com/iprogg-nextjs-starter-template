@@ -4,6 +4,7 @@ import {
   updateProfile,
 } from 'firebase/auth';
 import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../../features/userSlice';
@@ -17,8 +18,9 @@ const Login: React.FC<ILogin> = () => {
   const [name, setName] = useState('Markus K.');
 
   const dispatch = useDispatch();
+  const router = useRouter();
 
-  const loginToAppNextAuth = (e: any) => {
+  const loginToAppNextAuth = (e: React.SyntheticEvent<EventTarget>) => {
     e.preventDefault();
 
     signIn('credentials', {
@@ -32,6 +34,8 @@ const Login: React.FC<ILogin> = () => {
         if (res) {
           if (!res.ok) {
             alert(res.error);
+          } else {
+            router.replace('/');
           }
         }
       })
@@ -41,7 +45,7 @@ const Login: React.FC<ILogin> = () => {
       });
   };
 
-  const loginWithFirebase = (e: any) => {
+  const loginWithFirebase = (e: React.SyntheticEvent<EventTarget>) => {
     e.preventDefault();
 
     signInWithEmailAndPassword(auth, email, password)
@@ -58,7 +62,7 @@ const Login: React.FC<ILogin> = () => {
       .catch((error) => alert(error));
   };
 
-  const registerWithFirebase = (e: any) => {
+  const registerWithFirebase = (e: React.SyntheticEvent<EventTarget>) => {
     e.preventDefault();
 
     if (!name) {

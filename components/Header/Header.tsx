@@ -1,20 +1,20 @@
-import { signIn, signOut, useSession } from 'next-auth/react';
+import { signIn, signOut } from 'next-auth/react';
 import Link from 'next/link';
 import { useDispatch } from 'react-redux';
 import { open } from '../../features/modalSlice';
 
-/* This example requires Tailwind CSS v2.0+ */
-const navigation = [
-  { name: 'Menu #1', href: '#' },
-  { name: 'Menu #2', href: '#' },
-  { name: 'Menu #3', href: '#' },
-  { name: 'Menu #4', href: '#' },
-];
+export interface INavigationEntry {
+  name: string;
+  href: string;
+}
 
-export interface IHeader {}
+export interface IHeader {
+  isLoggedIn: boolean;
+  navigation: INavigationEntry[];
+}
 
-const Header: React.FC<IHeader> = () => {
-  const { data: session } = useSession();
+const Header: React.FC<IHeader> = ({ isLoggedIn, navigation }) => {
+  console.log({ isLoggedIn });
   const dispatch = useDispatch();
 
   return (
@@ -40,7 +40,7 @@ const Header: React.FC<IHeader> = () => {
                 Home
               </a>
             </Link>
-            {!session ? (
+            {!isLoggedIn ? (
               <>
                 <a
                   href="#"

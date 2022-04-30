@@ -1,8 +1,9 @@
+import PrimaryLayout from '@/components/layouts/primary/PrimaryLayout';
 import { GetServerSidePropsContext } from 'next';
-import { getSession, useSession } from 'next-auth/react';
+import { getSession } from 'next-auth/react';
 import React from 'react';
-import Header from '../../components/Header/Header';
-import Login from '../../components/Login/Login';
+import Login from '../../components/login/Login';
+import { NextPageWithLayout } from '../page';
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const session = await getSession({ req: context.req });
@@ -20,23 +21,16 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   };
 }
 
-const SignIn = () => {
-  const { data: session } = useSession();
+const SignIn: NextPageWithLayout = () => {
   return (
     <>
-      <Header />
-      {!session?.user ? (
-        <div className="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-          <Login />
-        </div>
-      ) : (
-        <>
-          <h3>{session?.user?.name}</h3>
-          <p>{session?.user?.email}</p>
-        </>
-      )}
+      <Login />
     </>
   );
 };
 
 export default SignIn;
+
+SignIn.getLayout = (page: any) => {
+  return <PrimaryLayout>{page}</PrimaryLayout>;
+};

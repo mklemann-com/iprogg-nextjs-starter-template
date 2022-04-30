@@ -1,4 +1,5 @@
 import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit';
+import { createWrapper } from 'next-redux-wrapper';
 import modalReducer from '../features/modalSlice';
 import userReducer from '../features/userSlice';
 
@@ -11,9 +12,7 @@ export function makeStore() {
 const store = makeStore();
 
 export type AppState = ReturnType<typeof store.getState>;
-
 export type AppDispatch = typeof store.dispatch;
-
 export type AppThunk<ReturnType = void> = ThunkAction<
   ReturnType,
   AppState,
@@ -21,4 +20,4 @@ export type AppThunk<ReturnType = void> = ThunkAction<
   Action<string>
 >;
 
-export default store;
+export const wrapper = createWrapper(makeStore, { debug: true });

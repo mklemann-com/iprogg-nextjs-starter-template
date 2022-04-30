@@ -1,7 +1,7 @@
 import { Dialog, Transition } from '@headlessui/react';
 import React, { Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Login from '../../components/Login/Login';
+import Login from '../login/Login';
 import { close } from '../../features/modalSlice';
 import { AppState } from '../../store/store';
 

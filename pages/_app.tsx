@@ -1,12 +1,19 @@
 import { SessionProvider } from 'next-auth/react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import { Provider } from 'react-redux';
-import LoginModal from '../components/Modal/LoginModal';
-import store from '../store/store';
+import LoginModal from '../components/modal/LoginModal';
+import { wrapper } from '../store/store';
 import '../styles/globals.css';
+import { NextPageWithLayout } from './page';
 
-function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
+interface AppPropsWithLayout extends AppProps {
+  Component: NextPageWithLayout;
+}
+
+function MyApp({
+  Component,
+  pageProps: { session, ...pageProps },
+}: AppPropsWithLayout) {
   // const user = useSelector(selectUser);
   // const dispatch = useDispatch();
 
@@ -28,20 +35,19 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   //     }
   //   });
   // }, []);
-
+  // Use the layout defined at the page level, if available
+  const getLayout = Component.getLayout || ((page: any) => page);
   return (
     <>
-      <Provider store={store}>
-        <SessionProvider session={session}>
-          <Head>
-            <title>iProGG Next.JS Starter Template</title>
-          </Head>
-          <Component {...pageProps} />
-          <LoginModal />
-        </SessionProvider>
-      </Provider>
+      <SessionProvider session={session}>
+        <Head>
+          <title>iProGG Next.JS Starter Template</title>
+        </Head>
+        {getLayout(<Component {...pageProps} />)}
+        <LoginModal />
+      </SessionProvider>
     </>
   );
 }
 
-export default MyApp;
+export default wrapper.withRedux(MyApp);
