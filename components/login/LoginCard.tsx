@@ -10,9 +10,9 @@ import { useDispatch } from 'react-redux';
 import { login } from '../../features/userSlice';
 import { auth } from '../../firebase/firebase';
 
-export interface ILogin {}
+export interface ILoginCard {}
 
-const Login: React.FC<ILogin> = () => {
+const LoginCard: React.FC<ILoginCard> = () => {
   const [email, setEmail] = useState('mklemann@web.de');
   const [password, setPassword] = useState('password');
   const [name, setName] = useState('Markus K.');
@@ -271,4 +271,4 @@ const Login: React.FC<ILogin> = () => {
   );
 };
 
-export default Login;
+export default LoginCard;

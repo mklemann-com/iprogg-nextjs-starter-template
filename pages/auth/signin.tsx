@@ -2,7 +2,7 @@ import PrimaryLayout from '@/components/layouts/primary/PrimaryLayout';
 import { GetServerSidePropsContext } from 'next';
 import { getSession } from 'next-auth/react';
 import React from 'react';
-import Login from '../../components/login/Login';
+import LoginCard from '../../components/login/LoginCard';
 import { NextPageWithLayout } from '../page';
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
@@ -24,7 +24,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 const SignIn: NextPageWithLayout = () => {
   return (
     <>
-      <Login />
+      <LoginCard />
     </>
   );
 };

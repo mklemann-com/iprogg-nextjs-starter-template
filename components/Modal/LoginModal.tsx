@@ -1,9 +1,9 @@
-import Login from '@/components/login/Login';
 import { Dialog, Transition } from '@headlessui/react';
 import React, { Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { close } from '../../features/modalSlice';
 import { AppState } from '../../store/store';
+import LoginCard from '../login/LoginCard';
 
 const LoginModal: React.FC = () => {
   const showModal = useSelector((state: AppState) => state.modal.modal);
@@ -45,7 +45,7 @@ const LoginModal: React.FC = () => {
             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
             <div className="relative inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:p-6">
-              <Login />
+              <LoginCard />
             </div>
           </Transition.Child>
         </div>

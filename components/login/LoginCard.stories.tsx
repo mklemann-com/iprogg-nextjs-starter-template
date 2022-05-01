@@ -1,20 +1,22 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import Login, { ILogin } from './Login';
-import { mockLoginProps } from './Login.mocks';
+import LoginCard, { ILoginCard } from './LoginCard';
+import { mockLoginCardProps } from './LoginCard.mocks';
 
 export default {
-  title: 'components/Login',
-  component: Login,
+  title: 'components/LoginCard',
+  component: LoginCard,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {},
-} as ComponentMeta<typeof Login>;
+} as ComponentMeta<typeof LoginCard>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof Login> = (args) => <Login {...args} />;
+const Template: ComponentStory<typeof LoginCard> = (args) => (
+  <LoginCard {...args} />
+);
 
 export const Base = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 
 Base.args = {
-  ...mockLoginProps.base,
-} as ILogin;
+  ...mockLoginCardProps.base,
+} as ILoginCard;
