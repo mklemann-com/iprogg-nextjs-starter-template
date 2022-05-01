@@ -1,5 +1,5 @@
 import PrimaryLayout from '@/components/layouts/primary/PrimaryLayout';
-import MiniProfile from '@/components/miniProfile/MiniProfile';
+import Profile from '@/components/profile/Profile';
 import { useSession } from 'next-auth/react';
 import { NextPageWithLayout } from './page';
 
@@ -17,7 +17,7 @@ const HomePage: NextPageWithLayout = () => {
           </>
         ) : (
           <>
-            <MiniProfile
+            <Profile
               name={session?.user?.name}
               email={session?.user?.email}
               imageUrl={session?.user?.image}

@@ -1,17 +1,13 @@
 import Image from 'next/image';
 import React from 'react';
 
-export interface IMiniProfile {
+export interface IProfile {
   name?: string | null;
   email?: string | null;
   imageUrl?: string | null;
 }
 
-const MiniProfile: React.FC<IMiniProfile> = ({
-  name,
-  email,
-  imageUrl,
-}: IMiniProfile) => {
+const Profile: React.FC<IProfile> = ({ name, email, imageUrl }: IProfile) => {
   return (
     <>
       <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
@@ -37,4 +33,4 @@ const MiniProfile: React.FC<IMiniProfile> = ({
   );
 };
 
-export default MiniProfile;
+export default Profile;
