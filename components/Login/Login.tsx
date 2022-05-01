@@ -68,8 +68,6 @@ const Login: React.FC<ILogin> = () => {
     if (!name) {
       return alert('Please enter a full name!');
     }
-    console.log({ email });
-    console.log({ password });
     createUserWithEmailAndPassword(auth, email, password)
       .then(async (userAuth) => {
         updateProfile(userAuth.user, {
