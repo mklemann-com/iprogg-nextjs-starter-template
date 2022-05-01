@@ -1,5 +1,5 @@
-import Footer from '@/components/footer/Footer';
-import Header from '@/components/header/Header';
+import Footer from '@/components/footer/AppFooter';
+import Header from '@/components/header/AppHeader';
 import { navigation } from '@/navigation';
 import { useSession } from 'next-auth/react';
 import Head from 'next/head';
@@ -27,7 +27,7 @@ const PrimaryLayout: React.FC<IPrimaryLayout> = ({ children, ...divProps }) => {
             {children}
           </div>
         </main>
-        <Footer />
+        <Footer navigation={navigation} />
       </div>
     </>
   );

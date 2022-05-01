@@ -1,4 +1,4 @@
-import { IHeader } from './Header';
+import { IHeader } from './AppHeader';
 
 const navigation = [
   { name: 'Menu #1', href: '#' },

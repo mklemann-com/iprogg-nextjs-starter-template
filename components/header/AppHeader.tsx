@@ -13,7 +13,7 @@ export interface IHeader {
   navigation: INavigationEntry[];
 }
 
-const Header: React.FC<IHeader> = ({ isLoggedIn, navigation }) => {
+const AppHeader: React.FC<IHeader> = ({ isLoggedIn, navigation }) => {
   console.log({ isLoggedIn });
   const dispatch = useDispatch();
 
@@ -85,4 +85,4 @@ const Header: React.FC<IHeader> = ({ isLoggedIn, navigation }) => {
     </header>
   );
 };
-export default Header;
+export default AppHeader;

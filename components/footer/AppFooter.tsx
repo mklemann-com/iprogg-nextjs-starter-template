@@ -1,8 +1,16 @@
-import { navigation } from '@/navigation';
+export interface INavigationEntry {
+  name: string;
+  href: string;
+}
+export interface IFooter extends React.ComponentPropsWithoutRef<'footer'> {
+  navigation: INavigationEntry[];
+}
 
-export interface IFooter extends React.ComponentPropsWithoutRef<'footer'> {}
-
-const Footer: React.FC<IFooter> = ({ className, ...footerProps }) => {
+const AppFooter: React.FC<IFooter> = ({
+  className,
+  navigation,
+  ...footerProps
+}) => {
   return (
     <footer {...footerProps} className={`bg-white ${className}`}>
       <div className="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
@@ -29,4 +37,4 @@ const Footer: React.FC<IFooter> = ({ className, ...footerProps }) => {
   );
 };
 
-export default Footer;
+export default AppFooter;
