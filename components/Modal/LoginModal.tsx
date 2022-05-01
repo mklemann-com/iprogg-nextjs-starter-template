@@ -1,11 +1,11 @@
+import Login from '@/components/login/Login';
 import { Dialog, Transition } from '@headlessui/react';
 import React, { Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { close } from '../../features/modalSlice';
 import { AppState } from '../../store/store';
-import Login from '../login/Login';
 
-const LoginModal = () => {
+const LoginModal: React.FC = () => {
   const showModal = useSelector((state: AppState) => state.modal.modal);
   const dispatch = useDispatch();
   return (
