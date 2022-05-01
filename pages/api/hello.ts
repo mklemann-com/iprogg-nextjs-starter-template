@@ -10,7 +10,7 @@ export type IApiHelloResponseData = {
 };
 
 export default function handler(
-  req: NextApiRequest,
+  req: IApiHelloRequest,
   res: NextApiResponse<IApiHelloResponseData>
 ) {
   const {
