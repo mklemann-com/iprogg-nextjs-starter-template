@@ -1,6 +1,6 @@
 import PrimaryLayout from '@/components/layouts/primary/PrimaryLayout';
+import MiniProfile from '@/components/miniProfile/MiniProfile';
 import { useSession } from 'next-auth/react';
-import MiniProfile from '../components/miniProfile/MiniProfile';
 import { NextPageWithLayout } from './page';
 
 const HomePage: NextPageWithLayout = () => {
