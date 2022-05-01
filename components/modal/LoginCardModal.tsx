@@ -5,7 +5,7 @@ import { close } from '../../features/modalSlice';
 import { AppState } from '../../store/store';
 import LoginCard from '../login/LoginCard';
 
-const LoginModal: React.FC = () => {
+const LoginCardModal: React.FC = () => {
   const showModal = useSelector((state: AppState) => state.modal.modal);
   const dispatch = useDispatch();
   return (
@@ -54,4 +54,4 @@ const LoginModal: React.FC = () => {
   );
 };
 
-export default LoginModal;
+export default LoginCardModal;

@@ -1,4 +1,4 @@
-import LoginModal from '@/components/modal/LoginModal';
+import LoginCardModal from '@/components/modal/LoginCardModal';
 import { SessionProvider } from 'next-auth/react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
@@ -44,7 +44,7 @@ function MyApp({
           <title>iProGG Next.JS Starter Template</title>
         </Head>
         {getLayout(<Component {...pageProps} />)}
-        <LoginModal />
+        <LoginCardModal />
       </SessionProvider>
     </>
   );
